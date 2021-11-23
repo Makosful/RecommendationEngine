@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FluentNHibernate" Version="3.1.0" />
+      <PackageReference Include="MySql.Data" Version="8.0.27" />
+      <PackageReference Include="NHibernate" Version="5.3.10" />
+      <PackageReference Include="NHibernate.Caches.CoreMemoryCache" Version="5.7.0" />
+    </ItemGroup>
+
+</Project>
