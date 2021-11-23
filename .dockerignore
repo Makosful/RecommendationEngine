@@ -1,0 +1,22 @@
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose.yaml
+docker-compose.override.yaml
+.env
+
+# Dotnet
+Rytme.Recommendation.WebApi/bin/
+Rytme.Recommendation.WebApi/obj/
+Rytme.Recommendation.WebApi/Properties/
+
+# JetBrains
+.idea/
+RecommendationEngine.sln.DotSettings
+
+# Generic
+README.md
