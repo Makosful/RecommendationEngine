@@ -1,9 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rytme.Recommendation.Engine.WebApi", "Rytme.Recommendation.Engine.WebApi\Rytme.Recommendation.Engine.WebApi.csproj", "{4305F7D1-8E68-4877-B67E-65EE545A56FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rytme.Recommendation.Engine.WebApi.Test", "Rytme.Recommendation.Engine.WebApi.Test\Rytme.Recommendation.Engine.WebApi.Test.csproj", "{07ADDA5D-74BC-4B53-9EED-296D765A37F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4305F7D1-8E68-4877-B67E-65EE545A56FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4305F7D1-8E68-4877-B67E-65EE545A56FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4305F7D1-8E68-4877-B67E-65EE545A56FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4305F7D1-8E68-4877-B67E-65EE545A56FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07ADDA5D-74BC-4B53-9EED-296D765A37F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07ADDA5D-74BC-4B53-9EED-296D765A37F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07ADDA5D-74BC-4B53-9EED-296D765A37F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07ADDA5D-74BC-4B53-9EED-296D765A37F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
