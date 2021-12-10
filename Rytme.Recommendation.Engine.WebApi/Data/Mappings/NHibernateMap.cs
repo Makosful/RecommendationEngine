@@ -1,5 +1,5 @@
 using FluentNHibernate.Mapping;
-using Rytme.Recommendation.Engine.WebApi.Entities;
+using Rytme.Recommendation.Engine.WebApi.Entities.Abstractions;
 
 namespace Rytme.Recommendation.Engine.WebApi.Data.Mappings;
 
