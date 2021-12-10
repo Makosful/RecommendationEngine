@@ -1,0 +1,16 @@
+version: "3.9"
+
+volumes:
+  recommender-db:
+
+services:
+  mysql:
+    image: docker.io/mysql:8.0.27
+    ports:
+      - "3306:3306"
+    restart: unless-stopped
+    volumes:
+      - recommender-db:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
