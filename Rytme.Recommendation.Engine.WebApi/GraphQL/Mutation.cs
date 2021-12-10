@@ -1,34 +1,29 @@
-using System;
 using HotChocolate.Execution;
-using Rytme.Recommendation.Engine.WebApi.Data;
 using Rytme.Recommendation.Engine.WebApi.GraphQL.Inputs;
 using Rytme.Recommendation.Engine.WebApi.GraphQL.Payloads;
+using Rytme.Recommendation.Engine.WebApi.Services.Interfaces;
 
-namespace Rytme.Recommendation.Engine.WebApi.GraphQL
+namespace Rytme.Recommendation.Engine.WebApi.GraphQL;
+
+public class Mutation
 {
-    public class Mutation
+    private readonly IArticleService _service;
+
+    public Mutation(IArticleService service)
     {
-        private readonly IArticleRepository _repository;
+        _service = service;
+    }
 
-        public Mutation(IArticleRepository repository)
+    public ArticleAddedPayload AddArticle(AddArticleInput input)
+    {
+        try
         {
-            _repository = repository;
+            var article = _service.AddArticle(input);
+            return new ArticleAddedPayload(article);
         }
-
-        public ArticleAddedPayload AddArticle(AddArticleInput input)
+        catch (ArgumentException ex)
         {
-            if (string.IsNullOrWhiteSpace(input.Name))
-                throw new QueryException("Input is empty");
-
-            try
-            {
-                var article = _repository.AddArticle(input);
-                return new ArticleAddedPayload(article);
-            }
-            catch (ArgumentException ex)
-            {
-                throw new QueryException(ex.Message);
-            }
+            throw new QueryException(ex.Message);
         }
     }
 }
