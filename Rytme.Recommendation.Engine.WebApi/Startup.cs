@@ -1,42 +1,39 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using FluentNHibernate.Cfg;
+using FluentNHibernate.Cfg.Db;
+using FluentNHibernate.Conventions.Helpers;
+using NHibernate;
+using NHibernate.Tool.hbm2ddl;
 using Rytme.Recommendation.Engine.WebApi.GraphQL;
 
-namespace Rytme.Recommendation.Engine.WebApi
+namespace Rytme.Recommendation.Engine.WebApi;
+
+public class Startup
 {
-    public class Startup
+    private readonly string _connectionString;
+
+    public Startup(IConfiguration configuration)
     {
-        private readonly IConfiguration _configuration;
+    }
 
-        public Startup(IConfiguration configuration)
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddControllers();
+        services.AddGraphQlServices();
+    }
+
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
         {
-            _configuration = configuration;
+            app.UseDeveloperExceptionPage();
         }
 
-        public void ConfigureServices(IServiceCollection services)
+        app.UseRouting();
+        app.UseWebSockets();
+        app.UseEndpoints(endpoints =>
         {
-            services.AddControllers();
-            services.AddGraphQlServices();
-        }
-
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-                app.UseDeveloperExceptionPage();
-            // var factory = app.ApplicationServices.CreateScope().ServiceProvider.GetService<IDbContextFactory<AppDataContext>>();
-            // using var context = factory?.CreateDbContext();
-            // Seed.SeedDatabase(context);
-
-            app.UseRouting();
-            app.UseWebSockets();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-                endpoints.MapGraphQL();
-            });
-        }
+            endpoints.MapControllers();
+            endpoints.MapGraphQL();
+        });
     }
 }
