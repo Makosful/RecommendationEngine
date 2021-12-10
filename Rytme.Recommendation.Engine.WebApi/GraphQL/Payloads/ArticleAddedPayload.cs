@@ -1,5 +1,13 @@
-using Rytme.Recommendation.Engine.WebApi.Entities;
-
 namespace Rytme.Recommendation.Engine.WebApi.GraphQL.Payloads;
 
-public record ArticleAddedPayload(Article Article);
+public class ArticleAddedPayload
+{
+    public long Id { get; set; }
+    public IEnumerable<CategoryScore> Scores { get; set; }
+
+    public class CategoryScore
+    {
+        public long Id { get; set; }
+        public float Score { get; set; }
+    }
+}
