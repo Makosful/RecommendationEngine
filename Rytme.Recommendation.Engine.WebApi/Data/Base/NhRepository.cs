@@ -1,9 +1,9 @@
 using NHibernate;
 using NHibernate.Linq;
-using Rytme.Recommendation.Engine.WebApi.Entities;
+using Rytme.Recommendation.Engine.WebApi.Entities.Abstractions;
 using ISession = NHibernate.ISession;
 
-namespace Rytme.Recommendation.Engine.WebApi.Data;
+namespace Rytme.Recommendation.Engine.WebApi.Data.Base;
 
 public abstract class NhRepository<TEntity> where TEntity : Entity
 {
