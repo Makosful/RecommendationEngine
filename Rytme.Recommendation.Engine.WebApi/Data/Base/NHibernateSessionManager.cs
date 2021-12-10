@@ -6,7 +6,7 @@ using NHibernate.Caches.CoreMemoryCache;
 using NHibernate.Context;
 using ISession = NHibernate.ISession;
 
-namespace Rytme.Recommendation.Engine.WebApi.Data;
+namespace Rytme.Recommendation.Engine.WebApi.Data.Base;
 
 public static class NHibernateSessionManager
 {
