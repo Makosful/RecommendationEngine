@@ -1,8 +1,6 @@
-namespace Rytme.Recommendation.Engine.WebApi.Entities
+namespace Rytme.Recommendation.Engine.WebApi.Entities;
+
+public class Article : Entity
 {
-    public record Article
-    {
-        public long Id { get; set; }
-        public string Title { get; set; } = string.Empty;
-    }
+    public string Title { get; set; } = string.Empty;
 }
