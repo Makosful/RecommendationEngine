@@ -16,10 +16,6 @@ public static class DependencyInjection
     {
         services.AddGraphQLServer()
             .AddQueryType<Query>() // Query functionality
-            .AddMutationType<Mutation>() // Add/change functionality
-            // .AddSubscriptionType<Subscription>()
-            // .AddType<PlatformType>()
-            // .AddType<CommandType>()
-            ;
+            .AddMutationType<Mutation>(); // Add/change functionality
     }
 }
