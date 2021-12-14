@@ -1,3 +1,4 @@
+using FluentNHibernate.Conventions;
 using HotChocolate.Execution;
 using Rytme.Recommendation.Engine.WebApi.Entities;
 using Rytme.Recommendation.Engine.WebApi.GraphQL.Inputs;
@@ -52,6 +53,9 @@ public class Mutation
 
             scores.Add(AddArticleScore(articleScoreService, articleScore));
         }
+
+        if (scores.IsEmpty())
+            throw new QueryException("Category list is empty or has been stripped empty");
 
         return new ArticleAddedPayload
         {

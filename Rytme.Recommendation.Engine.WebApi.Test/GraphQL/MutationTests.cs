@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
 using HotChocolate.Execution;
 using NSubstitute;
@@ -87,14 +88,102 @@ public class MutationTests
     public void AddArticle_ShouldThrowQueryException_WhenCategoryServiceFails()
     {
         // Arrange
-        _categoryService
-            .GetCategories(Arg.Any<IList<CategoryScore>>())
-            .Throws(new Exception());
+        _categoryService.GetCategories(Arg.Any<IList<CategoryScore>>()).Throws(new Exception());
         var input = new AddArticleInput
         {
             Id = 1,
             Categories = new List<CategoryScore>()
         };
+
+        // Act
+        Action action = () => _sut.AddArticle(_scoreService, _categoryService, input);
+
+        // Assert
+        action.Should().Throw<QueryException>();
+    }
+
+    [Fact]
+    public void AddArticle_ShouldRemoveCategoriesFromInput_WhenTheyDoNotExist()
+    {
+        // Arrange
+        var categories = new List<Category> // Count = 3
+        {
+            new() {Id = 1, Name = "Foo", Deleted = false},
+            new() {Id = 2, Name = "Bar", Deleted = false},
+            new() {Id = 3, Name = "Yar", Deleted = false}
+        };
+        var categoryScores = new List<CategoryScore> // Count = 2
+        {
+            new() {Id = 1, Score = 5.0f},
+            new() {Id = 4, Score = 5.0f} // Category does not exists
+        };
+        var input = new AddArticleInput
+        {
+            Id = 123456789,
+            Categories = categoryScores
+        };
+        _categoryService.GetCategories(Arg.Any<IList<CategoryScore>>()).Returns(categories);
+        _scoreService.AddScore(Arg.Any<ArticleScore>()).Returns(true);
+
+        // Act
+        var payload = _sut.AddArticle(_scoreService, _categoryService, input);
+
+        // Assert
+        const int expected = 1; // 2 categories entered. 1 removed because it doesn't exist.
+        payload.Scores.Count().Should().Be(expected, "Non-existent categories have been removed");
+    }
+
+    [Fact]
+    public void AddArticle_ShouldThrowQueryException_WhenCategoryListIsEmpty()
+    {
+        // Arrange
+        var categories = new List<Category>
+        {
+            new() {Id = 1, Name = "Foo", Deleted = false},
+            new() {Id = 2, Name = "Bar", Deleted = false},
+            new() {Id = 3, Name = "Yar", Deleted = false}
+        };
+        var categoryScores = new List<CategoryScore>
+        {
+            // Nothing, this will be empty
+        };
+        var input = new AddArticleInput
+        {
+            Id = 123456789,
+            Categories = categoryScores
+        };
+        _categoryService.GetCategories(Arg.Any<IList<CategoryScore>>()).Returns(categories);
+        _scoreService.AddScore(Arg.Any<ArticleScore>()).Returns(false); // Should not be called
+
+        // Act
+        Action action = () => _sut.AddArticle(_scoreService, _categoryService, input);
+
+        // Assert
+        action.Should().Throw<QueryException>();
+    }
+
+    [Fact]
+    public void AddArticle_ShouldThrowQueryException_IfAllCategoriesAreRemoved()
+    {
+        // Arrange
+        var categories = new List<Category>
+        {
+            new() {Id = 1, Name = "Foo", Deleted = false},
+            new() {Id = 2, Name = "Bar", Deleted = false},
+            new() {Id = 3, Name = "Yar", Deleted = false}
+        };
+        var categoryScores = new List<CategoryScore>
+        {
+            new() {Id = 4, Score = 5.0f}, // Does not exist
+            new() {Id = 5, Score = 5.0f} // Does not exist
+        };
+        var input = new AddArticleInput
+        {
+            Id = 123456789,
+            Categories = categoryScores
+        };
+        _categoryService.GetCategories(Arg.Any<IList<CategoryScore>>()).Returns(categories);
+        _scoreService.AddScore(Arg.Any<ArticleScore>()).Returns(false); // Should not be called
 
         // Act
         Action action = () => _sut.AddArticle(_scoreService, _categoryService, input);
