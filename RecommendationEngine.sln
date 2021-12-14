@@ -1,8 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rytme.Recommendation.Engine.WebApi", "Rytme.Recommendation.Engine.WebApi\Rytme.Recommendation.Engine.WebApi.csproj", "{4305F7D1-8E68-4877-B67E-65EE545A56FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rytme.Recommendation.WebApi", "Rytme.Recommendation.WebApi\Rytme.Recommendation.WebApi.csproj", "{4305F7D1-8E68-4877-B67E-65EE545A56FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rytme.Recommendation.Engine.WebApi.Test", "Rytme.Recommendation.Engine.WebApi.Test\Rytme.Recommendation.Engine.WebApi.Test.csproj", "{07ADDA5D-74BC-4B53-9EED-296D765A37F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rytme.Recommendation.WebApi.Test", "Rytme.Recommendation.WebApi.Test\Rytme.Recommendation.WebApi.Test.csproj", "{07ADDA5D-74BC-4B53-9EED-296D765A37F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rytme.Recommendation.Core", "Rytme.Recommendation.Core\Rytme.Recommendation.Core.csproj", "{E1114EF9-EEB3-4768-925F-81F1773FE8E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rytme.Recommendation.Core.Entity", "Rytme.Recommendation.Core.Entity\Rytme.Recommendation.Core.Entity.csproj", "{46FC8F53-4044-456A-A3FC-4A5E5796329E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rytme.Recommendation.Infrastructure", "Rytme.Recommendation.Infrastructure\Rytme.Recommendation.Infrastructure.csproj", "{1B6C0C67-11E6-4587-ACF3-FD680899C796}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +24,17 @@ Global
 		{07ADDA5D-74BC-4B53-9EED-296D765A37F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07ADDA5D-74BC-4B53-9EED-296D765A37F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07ADDA5D-74BC-4B53-9EED-296D765A37F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1114EF9-EEB3-4768-925F-81F1773FE8E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1114EF9-EEB3-4768-925F-81F1773FE8E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1114EF9-EEB3-4768-925F-81F1773FE8E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1114EF9-EEB3-4768-925F-81F1773FE8E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46FC8F53-4044-456A-A3FC-4A5E5796329E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46FC8F53-4044-456A-A3FC-4A5E5796329E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46FC8F53-4044-456A-A3FC-4A5E5796329E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46FC8F53-4044-456A-A3FC-4A5E5796329E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B6C0C67-11E6-4587-ACF3-FD680899C796}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B6C0C67-11E6-4587-ACF3-FD680899C796}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B6C0C67-11E6-4587-ACF3-FD680899C796}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B6C0C67-11E6-4587-ACF3-FD680899C796}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

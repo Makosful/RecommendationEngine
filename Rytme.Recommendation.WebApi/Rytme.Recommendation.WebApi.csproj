@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>72f3202b-e5cf-4c7e-bd67-190a12fe8a80</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="HotChocolate.AspNetCore" Version="12.3.2"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Rytme.Recommendation.Core.Entity\Rytme.Recommendation.Core.Entity.csproj"/>
+        <ProjectReference Include="..\Rytme.Recommendation.Core\Rytme.Recommendation.Core.csproj"/>
+        <ProjectReference Include="..\Rytme.Recommendation.Infrastructure\Rytme.Recommendation.Infrastructure.csproj"/>
+    </ItemGroup>
+
+</Project>
