@@ -37,7 +37,7 @@ public class MutationTests
         var addArticleInput = new AddArticleInput
         {
             Id = id,
-            Categories = new List<AddArticleInput.CategoryScore>
+            Categories = new List<CategoryScore>
             {
                 new() {Id = 123456789, Score = 5f}
             }
@@ -55,7 +55,7 @@ public class MutationTests
     {
         // Arrange
         _categoryService
-            .GetCategories(Arg.Any<IList<AddArticleInput.CategoryScore>>())
+            .GetCategories(Arg.Any<IList<CategoryScore>>())
             .Returns(new List<Category>
             {
                 new() {Id = 1, Deleted = false, Name = "Foo"},
@@ -66,7 +66,7 @@ public class MutationTests
         var input = new AddArticleInput
         {
             Id = 123456789,
-            Categories = new List<AddArticleInput.CategoryScore>
+            Categories = new List<CategoryScore>
             {
                 new()
                 {
@@ -88,12 +88,12 @@ public class MutationTests
     {
         // Arrange
         _categoryService
-            .GetCategories(Arg.Any<IList<AddArticleInput.CategoryScore>>())
+            .GetCategories(Arg.Any<IList<CategoryScore>>())
             .Throws(new Exception());
         var input = new AddArticleInput
         {
             Id = 1,
-            Categories = new List<AddArticleInput.CategoryScore>()
+            Categories = new List<CategoryScore>()
         };
 
         // Act

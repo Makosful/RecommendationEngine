@@ -1,6 +1,5 @@
 using Rytme.Recommendation.Engine.WebApi.Data.Interfaces;
 using Rytme.Recommendation.Engine.WebApi.Entities;
-using Rytme.Recommendation.Engine.WebApi.GraphQL.Inputs;
 using Rytme.Recommendation.Engine.WebApi.Services.Interfaces;
 
 namespace Rytme.Recommendation.Engine.WebApi.Services;
@@ -14,7 +13,7 @@ public class CategoryService : ICategoryService
         _repository = repository;
     }
 
-    public IList<Category> GetCategories(IList<AddArticleInput.CategoryScore> categoryIds)
+    public IList<Category> GetCategories(IList<CategoryScore> categoryIds)
     {
         IList<Category> categories = new List<Category>();
         var queryable = _repository.GetCategoryQuery();

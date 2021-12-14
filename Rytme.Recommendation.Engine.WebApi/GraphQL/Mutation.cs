@@ -56,7 +56,7 @@ public class Mutation
         return new ArticleAddedPayload
         {
             Id = input.Id,
-            Scores = scores.Select(x => new ArticleAddedPayload.CategoryScore
+            Scores = scores.Select(x => new CategoryScore
             {
                 Id = x.Category.Id,
                 Score = x.Score
