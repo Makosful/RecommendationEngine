@@ -25,6 +25,14 @@ public class AlgorithmTests
         new[] {1d, 1d, 1d, 2d, 2d, 1d, 0d, 0d, 0d, 0d}, // Length = 10, Index = 9
         new[] {0d, 1d, 0d, 2d, 2d, 0d, 1d, 0d, 0d, 0d}, // Length = 10, Index = 9
         0.82d)]
+    [InlineData(
+        new[] {2.0d, 2.2d}, // User B
+        new[] {1.7d, 1.2d}, // User D
+        0.98d)]
+    [InlineData(
+        new[] {2.0d}, // User B
+        new[] {2.3d}, // User A
+        1.00d)]
     public void CosineSimilarity_ShouldReturnExpected(double[] v1, double[] v2, double expected)
     {
         // Arrange
@@ -33,6 +41,6 @@ public class AlgorithmTests
         var actual = Algorithms.CosineSimilarity(v1, v2);
 
         // Assert
-        actual.Should().BeApproximately(expected, 2);
+        actual.Should().BeApproximately(expected, 0.01f);
     }
 }

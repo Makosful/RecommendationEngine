@@ -22,12 +22,7 @@ public static class Algorithms
         // A * B
         double dividend = 0f;
         for (var i = 0; i < vectorA.Length; i++)
-        {
-            var a = vectorA[i];
-            var b = vectorB[i];
-            var c = a * b;
-            dividend += c;
-        }
+            dividend += vectorA[i] * vectorB[i];
 
         // ||A|| * ||B||
         double d = 0f;
