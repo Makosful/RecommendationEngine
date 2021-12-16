@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rytme.Recommendation.Core.E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rytme.Recommendation.Infrastructure", "Rytme.Recommendation.Infrastructure\Rytme.Recommendation.Infrastructure.csproj", "{1B6C0C67-11E6-4587-ACF3-FD680899C796}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rytme.Recommendation.Core.Test", "Rytme.Recommendation.Core.Test\Rytme.Recommendation.Core.Test.csproj", "{E0748EF4-880C-4C67-8E44-16AE901FF4D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{1B6C0C67-11E6-4587-ACF3-FD680899C796}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B6C0C67-11E6-4587-ACF3-FD680899C796}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B6C0C67-11E6-4587-ACF3-FD680899C796}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0748EF4-880C-4C67-8E44-16AE901FF4D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0748EF4-880C-4C67-8E44-16AE901FF4D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0748EF4-880C-4C67-8E44-16AE901FF4D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0748EF4-880C-4C67-8E44-16AE901FF4D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
