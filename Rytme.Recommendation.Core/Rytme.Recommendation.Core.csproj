@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Rytme.Recommendation.Core.Entity\Rytme.Recommendation.Core.Entity.csproj"/>
+        <ProjectReference Include="..\Rytme.Recommendation.Core.Entity\Rytme.Recommendation.Core.Entity.csproj" />
     </ItemGroup>
 
 </Project>

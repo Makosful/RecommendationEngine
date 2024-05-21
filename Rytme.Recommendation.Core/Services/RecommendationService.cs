@@ -14,10 +14,14 @@ public class RecommendationService
 
     public double CalculateRecommendation(long userId, long articleId)
     {
+        if (userId < 1) throw new ArgumentException();
+        if (articleId < 1) throw new ArgumentException();
+        
         var desiredUserArticles = _userScoreService.GetArticlesByUser(userId);
         var usersThatHaveReadTheArticle = _userScoreService.GetUsersByArticle(articleId);
 
         var score = 0d;
+        var countedUsers = 0;
 
         foreach (var user in usersThatHaveReadTheArticle)
         {
@@ -42,6 +46,7 @@ public class RecommendationService
 
             if (exactArticle is null) // This shouldn't really happen, but might as well be safe
                 throw new InvalidOperationException($"Variable {nameof(exactArticle)} was never set");
+            if (desiredUserFilteredList.Count < 1) continue;
 
             var vectorA = currentUserFilteredList.Select(x => x.Score).ToArray();
             var vectorB = desiredUserFilteredList.Select(x => x.Score).ToArray();
@@ -49,8 +54,9 @@ public class RecommendationService
             var similarity = Algorithms.CosineSimilarity(vectorA, vectorB);
             var weightedScore = exactArticle!.Score * similarity;
             score += weightedScore;
+            countedUsers++;
         }
 
-        return score / usersThatHaveReadTheArticle.Count;
+        return score / countedUsers;
     }
 }

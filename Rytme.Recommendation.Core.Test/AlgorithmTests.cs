@@ -6,15 +6,36 @@ namespace Rytme.Recommendation.Core.Test;
 
 public class AlgorithmTests
 {
+    /// <summary>
+    ///     Boundary Test: |Vector| = 0
+    /// </summary>
     [Fact]
-    public void CosineSimilarity_ShouldThrowArgumentException_WhenInputVectorsAreNotEquallyLong()
+    public void CosineSimilarity_ShouldThrowArgumentException_IfVectorsContainNoElements()
     {
         // Arrange
-        double[] vector1 = {1d, 1d, 1d, 2d, 2d, 1d, 0d, 0d, 0d, 0d}; // Length = 10, Index = 9
-        double[] vector2 = {0d, 1d, 0d, 2d, 2d, 0d, 1d, 0d, 0d}; // Length =  9, Index = 8
+        double[] vector1 = { };
+        double[] vector2 = { };
 
         // Act
         Action action = () => Algorithms.CosineSimilarity(vector1, vector2);
+
+        // Assert
+        action.Should().Throw<ArgumentException>("because empty vectors have no data to work with");
+    }
+
+    [Theory]
+    [InlineData(new[] {1d, 1d, 1d, 2d, 2d, 1d, 0d, 0d, 0d, 0d}, new[] {0d, 1d, 0d, 2d, 2d, 0d, 1d, 0d, 0d})]
+    [InlineData(new[] {0d, 1d, 0d, 2d, 2d, 0d, 1d, 0d, 0d}, new[] {1d, 1d, 1d, 2d, 2d, 1d, 0d, 0d, 0d, 0d})]
+    [InlineData(new[] {1d}, new[] {0d, 1d})]
+    [InlineData(new[] {0d, 1d}, new[] {1d})]
+    public void CosineSimilarity_ShouldThrowArgumentException_WhenInputVectorsAreNotEquallyLong(
+        double[] v1, double[] v2)
+    {
+        // Arrange
+        // N/A
+
+        // Act
+        Action action = () => Algorithms.CosineSimilarity(v1, v2);
 
         // Assert
         action.Should().Throw<ArgumentException>("because input vectors are not the same length");

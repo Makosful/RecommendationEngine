@@ -1,7 +1,3 @@
-using Rytme.Recommendation.Core.Repositories.Interfaces;
-using Rytme.Recommendation.Core.Services;
-using Rytme.Recommendation.Core.Services.Interfaces;
-using Rytme.Recommendation.Infrastructure;
 using Rytme.Recommendation.Infrastructure.Base;
 using Rytme.Recommendation.WebApi.GraphQL;
 
@@ -27,13 +23,6 @@ public class Startup
 
         services.AddControllers();
         services.AddGraphQlServices();
-
-
-        services.AddScoped<IArticleScoreService, ArticleScoreService>();
-        services.AddScoped<IArticleScoreRepository, ArticleScoreRepository>();
-
-        services.AddScoped<ICategoryService, CategoryService>();
-        services.AddScoped<ICategoryRepository, CategoryRepository>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
